@@ -28,12 +28,17 @@ Route::get('/', [EventController::class, 'index'])->name('event.index');
 Route::get('/events/create', [EventController::class, 'create'])
     ->name('event.create');
 
-//Rotta STORE    
+//Rotta STORE
 Route::post('/events/create', [EventController::class, 'store'])
     ->name('event.store');
 
 //EDIT
-Route::get('/edit/{id}', [EventController::class, 'edit'])->name('event.edit');
+Route::get('/edit/{id}', [EventController::class, 'edit'])
+    ->name('event.edit');
+
+//UPDATE
+Route::put('/edit/{id}', [EventController::class, 'update'])
+    ->name('event.update');
 
 
 

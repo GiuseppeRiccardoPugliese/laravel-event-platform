@@ -9,12 +9,24 @@
         <label for="description">Description</label>
         <input type="text" name="description" id="description">
 
-        <label for="tag_id">Select a tag</label>
+        <h1>TAGS: </h1>
+        @foreach ($tags as $tag)
+            <div>
+                <input type="checkbox" name="tag_id[]" id="{{"tag_" . $tag->id}}"
+                value="{{$tag->id}}"
+                >
+                <label for="{{"tag_" . $tag->id}}">
+                    {{$tag->name}}
+                </label>
+            </div>
+        @endforeach
+
+        {{-- <label for="tag_id">Select a tag</label>
         <select name="tag_id" id="tag_id">
             @foreach ($tags as $tag)
                 <option value="{{ $tag->id }}">{{ $tag->name }}</option>
             @endforeach
-        </select>
+        </select> --}}
 
         <input type="submit" value="CREATE">
     </form>

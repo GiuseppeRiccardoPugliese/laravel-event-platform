@@ -1,57 +1,36 @@
 @extends('layouts.app')
 @section('content')
+    <h1>EDIT YOUR EVENT</h1>
+    <form action="{{ route('event.update', $event->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" value="{{$event->title}}">
 
-<form>
-    <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name">
-    </div>
-    <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <input type="text" class="form-control" id="description">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+        <label for="description">Description</label>
+        <input type="text" name="description" id="description" value="{{$event->description}}">
+
+        <div>
+            <h1>TAGS: </h1>
+            @foreach ($tags as $tag)
+                <div>
+                    <input type="checkbox" name="tag_id[]" id="{{"tag_" . $tag->id}}"
+                    value="{{$tag->id}}"
+
+                    @foreach ($event->tags as $eTag)
+                        @checked($eTag->id === $tag->id)
+                    @endforeach
+                    >
+
+                    <label for="{{"tag_" . $tag->id}}">
+                        {{$tag->name}}
+                    </label>
+                </div>
 
 
-<style>
-    body {
-        padding: 20px;
-    }
+            @endforeach
+        </div>
 
-    form {
-        max-width: 400px;
-        margin: 0 auto;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .form-label {
-        font-weight: bold;
-        display: block;
-        margin-bottom: 8px;
-    }
-
-    .form-control {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 16px;
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-
-    .btn-primary {
-        padding: 10px 15px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    .btn-primary:hover {
-        background-color: #0056b3;
-    }
-</style>
+        <input type="submit" value="EDIT">
+    </form>
 @endsection

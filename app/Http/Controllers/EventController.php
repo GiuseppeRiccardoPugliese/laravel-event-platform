@@ -44,7 +44,6 @@ class EventController extends Controller
         $data = $request->all();
 
         $event = new Event();
-
         $event->title = $data['title'];
         $event->description = $data['description'];
 
@@ -63,8 +62,8 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        $events = Event::find($id);
-        return view('events.show', compact('events'));
+        $event = Event::find($id);
+        return view('events.show', compact('event'));
     }
 
     /**
@@ -75,9 +74,11 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        $event= Event::find($id);
 
-        return view('events.edit', compact('event'));
+        $event= Event::find($id);
+        $tags=Tag::all();
+
+        return view('events.edit', compact('event','tags'));
     }
 
     /**
@@ -89,7 +90,17 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $event = Event::find($id);
+
+        $event->title = $data['title'];
+        $event->description = $data['description'];
+
+        $event->save();
+
+        $event->tags()->sync($data['tag_id']);
+
+        return redirect()->route('event.index', $event ->id);
     }
 
     /**
