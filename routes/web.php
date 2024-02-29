@@ -3,6 +3,7 @@
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagController;
+use App\Models\Event;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,11 +18,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+//Rotta in index per i TAGS
+Route::get('/tags', [TagController::class, 'index'])->name('tag.index');
+
 //Rotta in index per gli EVENTS
 Route::get('/', [EventController::class, 'index'])->name('event.index');
 
-//Rotta in index per i TAGS
-Route::get('/tags', [TagController::class, 'index'])->name('tag.index');
+//Rotta CREATE
+Route::get('/events/create', [EventController::class, 'create'])
+    ->name('event.create');
+
+//Rotta STORE    
+Route::post('/events/create', [EventController::class, 'store'])
+    ->name('event.store');
+
 
 
 

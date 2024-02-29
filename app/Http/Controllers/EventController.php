@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -27,7 +28,9 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        $tags = Tag::all();
+
+        return view('events.create', compact('tags'));
     }
 
     /**
@@ -38,7 +41,18 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $event = new Event();
+
+        $event->title = $data['title'];
+        $event->description = $data['description'];
+
+        $event->save();
+
+        $event->tags()->attach($data['tag_id']);
+
+        return redirect()->route('event.index');
     }
 
     /**
