@@ -12,8 +12,6 @@
                 <a href="{{ route('event.show', $event->id) }}">
                     <h2>{{ $event->title }}</h2>
                 </a>
-                <h2>{{ $event->name }}</h2>
-                <h2>{{ $event->description }}</h2>
                 <form  action="{{ route('event.delete', $event->id) }}" method="POST">
 
                     @csrf
