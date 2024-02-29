@@ -34,7 +34,6 @@ Route::post('/events/create', [EventController::class, 'store'])
 
 
 
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -46,3 +45,6 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+//Rotta in show per gli EVENTS
+route::get('/events/{id}', [EventController::class, 'show'])->name('event.show');
