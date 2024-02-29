@@ -24,6 +24,8 @@ Route::get('/', [EventController::class, 'index'])->name('event.index');
 Route::get('/tags', [TagController::class, 'index'])->name('tag.index');
 
 
+Route::delete('/events/{id}', [EventController::class, 'destroy'])->name('event.destroy');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
