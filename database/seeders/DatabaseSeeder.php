@@ -22,8 +22,8 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            EventSeederTable::class,
             TagSeederTable::class,
+            EventSeederTable::class,
         ]);
     }
 }
