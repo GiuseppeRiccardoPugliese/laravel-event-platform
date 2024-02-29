@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Event;
 use App\Models\Tag;
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -109,8 +108,14 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $event = Event :: find($id);
+        $event -> tags() -> sync([]);
+        $event -> delete();
+
+        return redirect() -> route('event.index');
     }
 }
+
+

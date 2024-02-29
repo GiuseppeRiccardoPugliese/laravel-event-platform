@@ -41,6 +41,8 @@ Route::put('/edit/{id}', [EventController::class, 'update'])
     ->name('event.update');
 
 
+Route::delete('/events/{id}', [EventController::class, 'delete'])->name('event.delete');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
