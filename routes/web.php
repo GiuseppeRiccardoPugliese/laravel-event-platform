@@ -28,7 +28,7 @@ Route::get('/', [EventController::class, 'index'])->name('event.index');
 Route::get('/events/create', [EventController::class, 'create'])
     ->name('event.create');
 
-//Rotta STORE    
+//Rotta STORE
 Route::post('/events/create', [EventController::class, 'store'])
     ->name('event.store');
 
@@ -36,7 +36,7 @@ Route::post('/events/create', [EventController::class, 'store'])
 Route::get('/edit/{id}', [EventController::class, 'edit'])->name('event.edit');
 
 
-Route::delete('/events/{id}', [EventController::class, 'destroy'])->name('event.destroy');
+Route::delete('/events/{id}', [EventController::class, 'delete'])->name('event.delete');
 
 
 Route::get('/dashboard', function () {

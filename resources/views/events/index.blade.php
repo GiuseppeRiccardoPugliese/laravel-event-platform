@@ -14,12 +14,12 @@
                 </a>
                 <h2>{{ $event->name }}</h2>
                 <h2>{{ $event->description }}</h2>
-                <form  action="{{ route('event.destroy', $event->id) }}" method="">
+                <form  action="{{ route('event.delete', $event->id) }}" method="POST">
 
                     @csrf
                     @method("DELETE")
 
-                    <input type="submit" value="DELETE" id="destroy"  name="destroy">
+                    <input type="submit" value="DELETE" id="delete"  name="delete">
                 </form>
             </li>
             <a href="{{ route('event.edit', $event->id) }}"><button>EDIT</button></a>
