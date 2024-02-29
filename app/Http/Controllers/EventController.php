@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -60,7 +61,9 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $event= Event::find($id);
+
+        return view('events.edit', compact('event'));
     }
 
     /**

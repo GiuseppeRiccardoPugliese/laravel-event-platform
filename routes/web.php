@@ -23,6 +23,9 @@ Route::get('/', [EventController::class, 'index'])->name('event.index');
 //Rotta in index per i TAGS
 Route::get('/tags', [TagController::class, 'index'])->name('tag.index');
 
+//EDIT
+Route::get('/edit/{id}', [EventController::class, 'edit'])->name('event.edit');
+
 
 
 Route::get('/dashboard', function () {
