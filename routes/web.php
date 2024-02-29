@@ -17,12 +17,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+
+
 //Rotta in index per gli EVENTS
 Route::get('/', [EventController::class, 'index'])->name('event.index');
 
 //Rotta in index per i TAGS
 Route::get('/tags', [TagController::class, 'index'])->name('tag.index');
-
 
 
 Route::get('/dashboard', function () {
@@ -36,3 +37,6 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+//Rotta in show per gli EVENTS
+route::get('/events/{id}', [EventController::class, 'show'])->name('event.show');
