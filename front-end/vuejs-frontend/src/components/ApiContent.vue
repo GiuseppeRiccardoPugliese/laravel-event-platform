@@ -55,6 +55,10 @@ export default {
           console.log(err);
         })
     },
+    getUserNameById(userId) {
+      const user = this.users.find(user => user.id === userId);
+      return user ? user.name : 'Nome non trovato';
+    },
 
   },
   mounted() {
@@ -76,6 +80,7 @@ export default {
       <div class="card-body">
         <h5 class="card-title">Titolo evento: {{ event.title }}</h5>
         <p class="card-text">Descrizione evento: {{ event.description }}</p>
+        <p>User: {{ getUserNameById(event.user_id) }}</p>
       </div>
     </div>
   </div>
