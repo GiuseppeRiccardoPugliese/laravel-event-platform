@@ -5,10 +5,7 @@
         @foreach ($events as $event)
             <li>
 
-                {{-- SHOW --}}
-                <a>
-                    <h2>{{ $event->title }}</h2>
-                </a>
+                <h2>{{ $event->title }}</h2>
 
             </li>
         @endforeach
