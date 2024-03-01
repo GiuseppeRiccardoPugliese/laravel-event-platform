@@ -3,6 +3,7 @@
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\Guest\HelloUser;
 use App\Models\Event;
 use Illuminate\Support\Facades\Route;
 
@@ -21,27 +22,9 @@ use Illuminate\Support\Facades\Route;
 //Rotta in index per i TAGS
 Route::get('/tags', [TagController::class, 'index'])->name('tag.index');
 
-//Rotta in index per gli EVENTS
-Route::get('/', [EventController::class, 'index'])->name('event.index');
+Route::get('/hello', [HelloUser::class, 'index'])->name('hello.user');
 
-//Rotta CREATE
-Route::get('/events/create', [EventController::class, 'create'])
-    ->name('event.create');
 
-//Rotta STORE
-Route::post('/events/create', [EventController::class, 'store'])
-    ->name('event.store');
-
-//Rotta EDIT
-Route::get('/edit/{id}', [EventController::class, 'edit'])
-    ->name('event.edit');
-
-//Rotta UPDATE
-Route::put('/edit/{id}', [EventController::class, 'update'])
-    ->name('event.update');
-
-//Rotta DELETE
-Route::delete('/events/{id}', [EventController::class, 'delete'])->name('event.delete');
 
 
 Route::get('/dashboard', function () {
@@ -52,6 +35,28 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    //Rotta in index per gli EVENTS
+    Route::get('/', [EventController::class, 'index'])->name('event.index');
+
+    //Rotta CREATE
+    Route::get('/events/create', [EventController::class, 'create'])
+        ->name('event.create');
+
+    //Rotta STORE
+    Route::post('/events/create', [EventController::class, 'store'])
+        ->name('event.store');
+
+    //Rotta EDIT
+    Route::get('/edit/{id}', [EventController::class, 'edit'])
+        ->name('event.edit');
+
+    //Rotta UPDATE
+    Route::put('/edit/{id}', [EventController::class, 'update'])
+        ->name('event.update');
+
+    //Rotta DELETE
+    Route::delete('/events/{id}', [EventController::class, 'delete'])->name('event.delete');
 });
 
 require __DIR__ . '/auth.php';
