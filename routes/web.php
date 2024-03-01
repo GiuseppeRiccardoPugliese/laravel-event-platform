@@ -32,15 +32,15 @@ Route::get('/events/create', [EventController::class, 'create'])
 Route::post('/events/create', [EventController::class, 'store'])
     ->name('event.store');
 
-//EDIT
+//Rotta EDIT
 Route::get('/edit/{id}', [EventController::class, 'edit'])
     ->name('event.edit');
 
-//UPDATE
+//Rotta UPDATE
 Route::put('/edit/{id}', [EventController::class, 'update'])
     ->name('event.update');
 
-
+//Rotta DELETE
 Route::delete('/events/{id}', [EventController::class, 'delete'])->name('event.delete');
 
 

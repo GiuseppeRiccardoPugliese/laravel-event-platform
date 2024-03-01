@@ -23,7 +23,6 @@ class EventSeederTable extends Seeder
 
                 $tags = Tag::inRandomOrder()->first();
                 $event->tags()->attach($tags);
-                $event->save();
             });
     }
 }
