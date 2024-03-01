@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Tag;
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -30,9 +31,11 @@ class EventController extends Controller
      */
     public function create()
     {
+        // ottengo l'ID dell'utente autenticato
+        $user_id = Auth::id();
         $tags = Tag::all();
 
-        return view('events.create', compact('tags'));
+        return view('events.create', compact('tags', 'user_id'));
     }
 
     /**
@@ -48,6 +51,9 @@ class EventController extends Controller
         $event = new Event();
         $event->title = $data['title'];
         $event->description = $data['description'];
+
+        // utilizzo l'ID dell'utente autenticato
+        $event->user_id = Auth::id();
 
         $event->save();
 
