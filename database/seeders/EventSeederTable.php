@@ -18,10 +18,10 @@ class EventSeederTable extends Seeder
     {
         Event::factory()
             ->count(20)
-            ->create()
+            ->create() //NELLA relazione ONE to MANY si utilizza il make()
             ->each(function ($event) {
 
-                $tags = Tag::inRandomOrder()->first();
+                $tags = Tag::inRandomOrder()->take(3)->get();
                 $event->tags()->attach($tags);
             });
     }
