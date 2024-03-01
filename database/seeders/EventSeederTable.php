@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-
+use App\Models\User;
 use App\Models\Event;
 use App\Models\Tag;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -18,8 +18,14 @@ class EventSeederTable extends Seeder
     {
         Event::factory()
             ->count(20)
-            ->create() //NELLA relazione ONE to MANY si utilizza il make()
+            ->make() //NELLA relazione ONE to MANY si utilizza il make()
+                    //NELLA relazione MANY to MANY si utilizza il create
             ->each(function ($event) {
+
+                $user = User::inRandomOrder()->first();
+                $event -> user() -> associate($user);
+
+                $event->save();
 
                 $tags = Tag::inRandomOrder()->take(3)->get();
                 $event->tags()->attach($tags);
