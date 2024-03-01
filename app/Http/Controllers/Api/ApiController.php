@@ -35,4 +35,15 @@ class ApiController extends Controller
 
         ]);
     }
+
+    public function getAllTags()
+    {
+        $tags = Tag::all();
+
+        return response()->json([
+
+            'tags' => $tags,
+
+        ]);
+    }
 }

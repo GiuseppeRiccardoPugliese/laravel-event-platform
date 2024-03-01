@@ -27,4 +27,7 @@ Route::group(['prefix' => '/v1'], function () {
 
     //Rotta per tutti gli UTENTI
     Route::get('users/index', [ApiController::class, 'getAllUsers']);
+
+     //Rotta per tutti gli TAG
+     Route::get('tags/index', [ApiController::class, 'getAllTags']);
 });
