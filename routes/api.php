@@ -24,4 +24,7 @@ Route::group(['prefix' => '/v1'], function () {
 
     //Rotta per tutti gli EVENTI
     Route::get('events/index', [ApiController::class, 'getAllEvents']);
+
+    //Rotta per tutti gli UTENTI
+    Route::get('users/index', [ApiController::class, 'getAllUsers']);
 });

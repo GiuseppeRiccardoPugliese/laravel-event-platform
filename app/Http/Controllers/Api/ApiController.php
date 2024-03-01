@@ -24,4 +24,15 @@ class ApiController extends Controller
 
         ]);
     }
+
+    public function getAllUsers()
+    {
+        $users = User::all();
+
+        return response()->json([
+
+            'users' => $users,
+
+        ]);
+    }
 }
