@@ -3,6 +3,12 @@
     <form action="{{ route('event.store') }}" method="POST">
         @csrf
         @method('POST')
+
+        <h1>
+            {{ Auth::user()->name }}
+        </h1>
+        <br>
+
         <label for="title">Title</label>
         <input type="text" name="title" id="title">
 
@@ -20,6 +26,7 @@
                 </label>
             </div>
         @endforeach
+
 
         {{-- <label for="tag_id">Select a tag</label>
         <select name="tag_id" id="tag_id">

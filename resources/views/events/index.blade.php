@@ -1,13 +1,14 @@
 @extends('layouts.app')
 @section('content')
-    <h1>Events: [{{ count($events) }}]</h1>
-    {{-- CREATE --}}
-    <a href="{{ route('event.create') }}">CREATE</a>
+@auth
+<h1>Events: [{{ count($events) }}]</h1>
+{{-- CREATE --}}
+<a href="{{ route('event.create') }}">CREATE</a>
 
-    <ul>
-        @foreach ($events as $event)
+<ul>
+    @foreach ($events as $event)
+        @if ($user==$event->user->id)
             <li>
-
                 {{-- SHOW --}}
                 <a href="{{ route('event.show', $event->id) }}">
                     <h2>{{ $event->title }}</h2>
@@ -21,6 +22,10 @@
                 </form>
             </li>
             <a href="{{ route('event.edit', $event->id) }}"><button>EDIT</button></a>
-        @endforeach
-    </ul>
+        @endif
+    @endforeach
+
+</ul>
+@endauth
+
 @endsection

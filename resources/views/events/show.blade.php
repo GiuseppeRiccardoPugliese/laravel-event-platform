@@ -7,4 +7,5 @@
         <h2>TAG: {{$tag->name}}</h2>
     @endforeach
 
+    {{-- <h3>User: {{$user->name}}</h3> --}}
 @endsection

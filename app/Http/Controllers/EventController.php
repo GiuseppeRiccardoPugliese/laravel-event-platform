@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Tag;
 use App\Models\Event;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -16,10 +17,10 @@ class EventController extends Controller
 
     public function index()
     {
-
+        $user=Auth::id();
         $events = Event::all();
 
-        return view('events.index', compact('events'));
+        return view('events.index', compact('events','user'));
     }
 
     /**
