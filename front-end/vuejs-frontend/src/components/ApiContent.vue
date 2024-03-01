@@ -94,7 +94,7 @@ export default {
             </div>
           </div>
         </div>
-      </div>
+
 
       <h1 class="text-center fw-bolder text-danger mb-4">Tags</h1>
         <div class="row">
@@ -106,7 +106,7 @@ export default {
             </div>
           </div>
         </div>
-
+    </div>
 
 </template>
 
