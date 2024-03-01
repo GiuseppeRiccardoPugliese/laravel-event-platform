@@ -78,31 +78,17 @@ export default {
             <p class="card-text">Descrizione evento: {{ event.description }}</p>
           </div>
         </div>
-      </div>
-    </div>
 
-    <h1 class="text-center fw-bolder text-danger mb-4">Users</h1>
-    <div class="row">
-      <div v-for="user in users" :key="user.id" class="col-md-4">
-        <div class="card mb-4 shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">User: {{ user.name }}</h5>
-            <p class="card-text"> Email: {{ user.email }}</p>
+        <h1 class="text-center fw-bolder text-danger mb-4">Users</h1>
+        <div class="row">
+          <div v-for="user in users" :key="user.id" class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">User: {{ user.name }}</h5>
+                <p class="card-text"> Email: {{ user.email }}</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <h1 class="text-center fw-bolder text-danger mb-4">Tags</h1>
-    <div class="row">
-      <div v-for="tag in tags" :key="tag.id" class="col-md-4">
-        <div class="card mb-4 shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Tags: {{ tag.name }}</h5>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </template>
 
 <style scoped>
