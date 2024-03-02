@@ -91,7 +91,7 @@ export default {
                     <p class="user-info">{{ getUserNameById(event.user_id) }}</p>
                     <ul>
                       <li v-for="tag in event.tags" :key="tag.id">
-                        <span>Tags: {{ tag.name }}</span>
+                        <span>Tag: {{ tag.name }}</span>
                       </li>
                     </ul>
                   </div>
