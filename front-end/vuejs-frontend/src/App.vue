@@ -13,7 +13,6 @@ export default {
 </template>
 
 <style >
-body{
-    background-color: rgb(53, 49, 49);
-}
+
+
 </style>

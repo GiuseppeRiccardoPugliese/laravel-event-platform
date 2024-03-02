@@ -77,28 +77,38 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <h1 class="text-center fw-bolder text-danger mb-4">Events</h1>
-    <div class="row">
-      <div v-for="event in events" :key="event.id" class="col-md-4">
-        <div class="card mb-4 shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Titolo evento: {{ event.title }}</h5>
-            <p class="card-text">Descrizione evento: {{ event.description }}</p>
-            <p class="user-info">{{ getUserNameById(event.user_id) }}</p>
-            <ul>
-              <li v-for="tag in event.tags" :key="tag.id">
-                <span>Tags: {{ tag.name }}</span>
-              </li>
-            </ul>
-          </div>
+
+    <body>
+
+        <div class="container">
+            <h1 class="text-center fw-bolder text-danger mb-4">Events</h1>
+            <div class="row">
+              <div v-for="event in events" :key="event.id" class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                  <div class="card-body">
+                    <h5 class="card-title">Titolo evento: {{ event.title }}</h5>
+                    <p class="card-text">Descrizione evento: {{ event.description }}</p>
+                    <p class="user-info">{{ getUserNameById(event.user_id) }}</p>
+                    <ul>
+                      <li v-for="tag in event.tags" :key="tag.id">
+                        <span>Tags: {{ tag.name }}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
+
+    </body>
+
 </template>
 
 <style scoped>
+
+body{
+    background-color: rgb(53, 49, 49);
+}
 
 .row {
   margin-top: 20px;
@@ -106,7 +116,7 @@ export default {
 
 .card {
   border: 1px solid white;
-  height: 300px;
+  height: 400px;
   transition: transform 0.3s ease-in-out;
   background-color: #666;
   color: black;
@@ -121,5 +131,7 @@ export default {
   font-weight: bold;
   color: #75afed;
 }
+
+
 
 </style>
