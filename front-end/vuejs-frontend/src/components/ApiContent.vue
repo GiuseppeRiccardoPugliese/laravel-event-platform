@@ -35,6 +35,7 @@ export default {
 
           const data = res.data;
 
+
           this.users = data.users;
 
         })
@@ -47,8 +48,10 @@ export default {
         .then(res => {
 
           const data = res.data;
-
+          console.log('2nd log tag', res);
           this.tags = data.tags;
+
+          console.log('2nd log tag', this.tags);
 
         })
         .catch(err => {
@@ -56,8 +59,11 @@ export default {
         })
     },
     getUserNameById(userId) {
+
+      // Trovo l'utente nell'array 'this.users' con l'ID corrispondente
       const user = this.users.find(user => user.id === userId);
-      return user ? user.name : 'Nome non trovato';
+      return `User: ${user.name} - Mail: ${user.email}`;
+
     },
 
   },
@@ -80,31 +86,12 @@ export default {
       <div class="card-body">
         <h5 class="card-title">Titolo evento: {{ event.title }}</h5>
         <p class="card-text">Descrizione evento: {{ event.description }}</p>
-        <p>User: {{ getUserNameById(event.user_id) }}</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<h1 class="text-center fw-bolder text-danger mb-4">Users</h1>
-<div class="row">
-  <div v-for="user in users" :key="user.id" class="col-md-4">
-    <div class="card mb-4 shadow-sm">
-      <div class="card-body">
-        <h5 class="card-title">User: {{ user.name }}</h5>
-        <p class="card-text"> Email: {{ user.email }}</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<h1 class="text-center fw-bolder text-danger mb-4">Tags</h1>
-<div class="row">
-  <div v-for="tag in tags" :key="tag.id" class="col-md-4">
-    <div class="card mb-4 shadow-sm">
-      <div class="card-body">
-        <h5 class="card-title">Tags: {{ tag.name }}</h5>
+        <p>{{ getUserNameById(event.user_id) }}</p>
+        <ul>
+          <li v-for="tag in event.tags" :key="tag.id">
+            <span>Tags: {{ tag.name }}</span>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

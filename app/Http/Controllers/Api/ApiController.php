@@ -16,7 +16,8 @@ class ApiController extends Controller
 
     public function getAllEvents()
     {
-        $events = Event::all();
+        // Prendo gli eventi dal database insieme ai tag associati a ciascun evento
+        $events = Event::with('tags')->get();
 
         return response()->json([
 
