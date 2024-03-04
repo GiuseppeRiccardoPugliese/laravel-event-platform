@@ -12,7 +12,7 @@ export default {
 
 <nav class="navbar">
     <div class="container">
-      <router-link class="navbar-brand" :to="{ name: 'home' }">Home</router-link>
+      <router-link class="nav-link" :to="{ name: 'home' }">Home</router-link>
       <router-link class="nav-link" :to="{ name: 'events' }">Events</router-link>
       <router-link class="nav-link" :to="{ name: 'tags' }">Tags</router-link>
       <router-link class="nav-link" :to="{ name: 'about' }">About</router-link>
