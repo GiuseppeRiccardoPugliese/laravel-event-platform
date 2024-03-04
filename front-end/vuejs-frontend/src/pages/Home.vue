@@ -1,4 +1,4 @@
-<script >
+<script>
 
 //Importo AXIOS
 import axios from 'axios';
@@ -11,6 +11,7 @@ export default {
       events: [], //Array per gli eventi
       users: [],//Array per gli utenti
       tags: [],//Array per i tags
+      selectedEvent: null,
     }
   },
   methods: {
@@ -77,39 +78,47 @@ export default {
 </script>
 
 <template>
-  <body>
-        <div class="container">
-            <h1 class="text-center fw-bolder text-danger mb-4">Events</h1>
-            <div class="row">
-              <div v-for="event in events" :key="event.id" class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                  <div class="card-body">
-                    <h5 class="card-title">Titolo evento: {{ event.title }}</h5>
-                    <p class="card-text">Descrizione evento: {{ event.description }}</p>
-                    <p class="user-info">{{ getUserNameById(event.user_id) }}</p>
-                    <ul>
-                      <li v-for="tag in event.tags" :key="tag.id">
-                        <span>Tag: {{ tag.name }}</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </div>
 
-    </body>
+  <body>
+    <div class="container">
+      <h1 class="text-center fw-bolder text-danger mb-4">Events</h1>
+      <div class="row" v-if="selectedEvent != null">
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Titolo evento: {{ selectedEvent.title }}
+              </h5>
+              <p class="card-text">Descrizione evento: {{ selectedEvent.description }}</p>
+              <p class="user-info">{{ getUserNameById(selectedEvent.user_id) }}</p>
+              <ul>
+                <li v-for="tag in selectedEvent.tags" :key="tag.id">
+                  <span>Tag: {{ tag.name }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card" v-for="event in events" v-else>
+        <div class="card-body">
+          <h5 class="card-title">Titolo evento: <a href="#" @click="selectedEvent = event"> {{
+        event.title }}</a></h5>
+        </div>
+      </div>
+    </div>
+  </body>
 
 </template>
 
 <style scoped>
-
-body{
-    background-color: rgb(53, 49, 49);
+body {
+  background-color: rgb(53, 49, 49);
+  height: 100%;
 }
 
 .row {
   margin-top: 20px;
+  height: 100%;
 }
 
 .card {
@@ -129,7 +138,4 @@ body{
   font-weight: bold;
   color: #75afed;
 }
-
-
-
 </style>
